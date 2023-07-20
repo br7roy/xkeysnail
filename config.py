@@ -41,6 +41,15 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
 })
 
 
+
+
+# Keybindings for Zeal https://github.com/zealdocs/zeal/
+define_keymap(re.compile("Zeal"), {
+    # Ctrl+s to focus search area
+    K("C-s"): K("C-k"),
+}, "Zeal")
+################UserDefine
+
 # Keybindings for Firefox/Chrome
 define_keymap(re.compile("Firefox|Google-chrome"), {
     # Ctrl+Alt+j/k to switch next/previous tab
@@ -50,7 +59,6 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("C-j"): K("C-f6"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")],
-###########################################################################
     K("C-q"): K("C-q"),
     K("M-w"): K("C-w"),
     K("M-r"): K("C-r"),
@@ -73,17 +81,28 @@ define_keymap(re.compile("jetbrains-idea"), {
 }, "jetbrains-idea")
 
 define_keymap(re.compile("kate"), {
-    K("C-s"): K("C-s")
+    K("C-s"): K("C-s"),
+    K("M-f"): K("C-f")
 }, "kate")
 
-# Keybindings for Zeal https://github.com/zealdocs/zeal/
-define_keymap(re.compile("Zeal"), {
-    # Ctrl+s to focus search area
-    K("C-s"): K("C-k"),
-}, "Zeal")
+define_keymap(re.compile("dolphin"), {
+    K("M-f"): K("C-f"),
+    K("M-n"): K("C-n"),
+    K("M-t"): K("C-t"),
+    K("M-w"): K("C-w")
+}, "dolphin")
 
+define_keymap(re.compile("yakuake|konsole"),{
+    K("M-t"): K("C-Shift-t"),
+    K("M-w"): K("C-Shift-r"),
+    K("M-x"): [K("M-x"), set_mark(False)],
+    K("M-c"): [K("M-c"), set_mark(False)],
+    K("M-v"): [K("M-v"), set_mark(False)]
+},"Misc")
+
+###########################
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","konsole","qtwebflix"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","konsole"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
