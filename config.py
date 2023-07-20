@@ -52,9 +52,23 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")],
     K("C-space"): K("C-space"),
     K("C-q"): K("C-q"),
-    K("C-w"): K("C-w"),
-    K("C-f"): K("C-f")
+    K("M-w"): K("C-w"),
+    K("M-r"): K("C-r"),
+    K("M-f"): K("C-f"),
+    K("M-n"): K("C-n"),
+    K("M-t"): K("C-t"),
+    K("M-q"): K("M-f4")
 }, "Firefox and Chrome")
+
+
+define_keymap(re.compile("flameshot"), {
+    K("M-c"): K("C-c")
+}, "flameshot")
+
+define_keymap(re.compile("jetbrains-idea"), {
+    K("M-c"): K("C-c"),
+    K("M-v"): K("C-v")
+}, "jetbrains-idea")
 
 # Keybindings for Zeal https://github.com/zealdocs/zeal/
 define_keymap(re.compile("Zeal"), {
@@ -63,7 +77,7 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","jetbrains-idea","yakuake","konsole","systemsettings","qtwebflix","Ulauncher"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","konsole","systemsettings","qtwebflix","Ulauncher"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
@@ -93,6 +107,9 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","jetbrains-idea
     K("M-x"): [K("C-x"), set_mark(False)],
     K("M-c"): [K("C-c"), set_mark(False)],
     K("M-v"): [K("C-v"), set_mark(False)],
+    K("M-z"): K("C-z"),
+    K("M-Shift-z"): K("C-y"),
+    K("M-Shift-v"): K("M-m"),
     # Delete
     K("C-d"): [K("delete"), set_mark(False)],
     K("M-d"): [K("C-delete"), set_mark(False)],
@@ -128,5 +145,8 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","jetbrains-idea
         K("C-g"): pass_through_key,
         # C-x u (undo)
         K("u"): [K("C-z"), set_mark(False)],
-    }
+    },
+    K("M-a"): [K("C-home"), K("C-a"), set_mark(True)],
+    K("M-q"): K("M-f4")
+    
 }, "Emacs-like keys")
