@@ -50,14 +50,16 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("C-j"): K("C-f6"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")],
-    K("C-space"): K("C-space"),
+###########################################################################
     K("C-q"): K("C-q"),
     K("M-w"): K("C-w"),
     K("M-r"): K("C-r"),
     K("M-f"): K("C-f"),
     K("M-n"): K("C-n"),
     K("M-t"): K("C-t"),
-    K("M-q"): K("M-f4")
+    K("M-q"): K("M-f4"),
+    K("M-c"): K("C-c"),
+    K("M-v"): K("C-v")
 }, "Firefox and Chrome")
 
 
@@ -70,6 +72,10 @@ define_keymap(re.compile("jetbrains-idea"), {
     K("M-v"): K("C-v")
 }, "jetbrains-idea")
 
+define_keymap(re.compile("kate"), {
+    K("C-s"): K("C-s")
+}, "kate")
+
 # Keybindings for Zeal https://github.com/zealdocs/zeal/
 define_keymap(re.compile("Zeal"), {
     # Ctrl+s to focus search area
@@ -77,7 +83,7 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","konsole","systemsettings","qtwebflix","Ulauncher"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","konsole","qtwebflix"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
@@ -91,7 +97,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","kons
     K("C-a"): with_mark(K("home")),
     K("C-e"): with_mark(K("end")),
     # Page up/down
-    K("M-v"): with_mark(K("page_up")),
+#    K("M-v"): with_mark(K("page_up")),
     K("C-v"): with_mark(K("page_down")),
     # Beginning/End of file
     K("M-Shift-comma"): with_mark(K("C-home")),
@@ -100,16 +106,6 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","kons
     K("C-m"): K("enter"),
     K("C-j"): K("enter"),
     K("C-o"): [K("enter"), K("left")],
-    # Copy
-#    K("C-w"): [K("C-x"), set_mark(False)],
-#    K("M-w"): [K("C-c"), set_mark(False)],
-#    K("C-y"): [K("C-v"), set_mark(False)],
-    K("M-x"): [K("C-x"), set_mark(False)],
-    K("M-c"): [K("C-c"), set_mark(False)],
-    K("M-v"): [K("C-v"), set_mark(False)],
-    K("M-z"): K("C-z"),
-    K("M-Shift-z"): K("C-y"),
-    K("M-Shift-v"): K("M-m"),
     # Delete
     K("C-d"): [K("delete"), set_mark(False)],
     K("M-d"): [K("C-delete"), set_mark(False)],
@@ -146,7 +142,19 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt","yakuake","kons
         # C-x u (undo)
         K("u"): [K("C-z"), set_mark(False)],
     },
+#########################################################################
     K("M-a"): [K("C-home"), K("C-a"), set_mark(True)],
-    K("M-q"): K("M-f4")
+    K("M-q"): K("M-f4"),
+    K("M-enter"): K("C-enter"),
+    # Copy
+#    K("C-w"): [K("C-x"), set_mark(False)],
+#    K("M-w"): [K("C-c"), set_mark(False)],
+#    K("C-y"): [K("C-v"), set_mark(False)],
+    K("M-x"): [K("C-x"), set_mark(False)],
+    K("M-c"): [K("C-c"), set_mark(False)],
+    K("M-v"): [K("C-v"), set_mark(False)],
+    K("M-z"): K("C-z"),
+    K("M-Shift-z"): K("C-y"),
+    K("C-M-v"): K("M-m")
     
 }, "Emacs-like keys")
