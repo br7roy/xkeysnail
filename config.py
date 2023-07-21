@@ -77,12 +77,21 @@ define_keymap(re.compile("flameshot"), {
 
 define_keymap(re.compile("jetbrains-idea"), {
     K("M-c"): K("C-c"),
-    K("M-v"): K("C-v")
+    K("M-v"): K("C-v"),
+    K("M-f"): K("C-f"),
+    K("M-enter"): K("M-enter"),
+    K("C-enter"): K("C-enter")
 }, "jetbrains-idea")
 
 define_keymap(re.compile("kate"), {
     K("C-s"): K("C-s"),
-    K("M-f"): K("C-f")
+    K("M-f"): K("C-f"),
+    K("M-w"): K("C-w"),
+    K("M-n"): K("C-n"),
+    K("M-Shift-n"): K("C-Shift-n"),
+    K("M-z"): K("C-z"),
+    K("M-Shift-z"): K("C-Shift-z")
+
 }, "kate")
 
 define_keymap(re.compile("dolphin"), {
@@ -95,10 +104,14 @@ define_keymap(re.compile("dolphin"), {
 define_keymap(re.compile("yakuake|konsole"),{
     K("M-t"): K("C-Shift-t"),
     K("M-w"): K("C-Shift-r"),
-    K("M-x"): [K("M-x"), set_mark(False)],
-    K("M-c"): [K("M-c"), set_mark(False)],
-    K("M-v"): [K("M-v"), set_mark(False)]
+    K("LM-c"): K("C-LShift-c"),
+    K("M-v"): K("M-v")
+
 },"Misc")
+
+define_keymap(re.compile("Ulauncher"),{
+    K("M-a"): K("C-a")
+},"Ulauncher")
 
 ###########################
 # Emacs-like keybindings in non-Emacs applications
